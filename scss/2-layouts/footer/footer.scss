@@ -1,0 +1,8 @@
+@use "../../1-base/variables";
+@use "Footer__Content";
+@use "Footer__CardsAndCopy";
+
+.Footer {
+  padding: 2rem 0;
+  background-color: variables.$bg-color;
+}

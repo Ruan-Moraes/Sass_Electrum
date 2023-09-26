@@ -1,0 +1,37 @@
+@use "../../1-base/variables";
+@use "../../3-modules/mixins";
+
+.Navigation__Container {
+  @include mixins.container;
+
+  .Navigation__MenuForMobile {
+    display: none;
+    font-size: 2rem;
+    @include mixins.md {
+      display: block;
+    }
+
+    i {
+      color: variables.$dark-color;
+    }
+  }
+
+  .Navigation__MenuForDesktop {
+    display: flex;
+    gap: 1.5rem;
+    @include mixins.md {
+      display: none;
+    }
+
+    .MenuForDesktop__Links {
+      color: variables.$dark-color;
+      border-bottom: 2px solid transparent;
+      transition: color variables.$transition-animations,
+        border-color variables.$transition-animations;
+      &:hover {
+        color: variables.$primary-color;
+        border-color: variables.$primary-color;
+      }
+    }
+  }
+}

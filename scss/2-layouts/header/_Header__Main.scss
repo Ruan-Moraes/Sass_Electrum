@@ -1,0 +1,63 @@
+@use "../../1-base/variables";
+@use "../../3-modules/mixins";
+@use "../../3-modules/plugins";
+
+.Main__Container {
+  @include mixins.container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: variables.$light-color;
+  @include mixins.lg {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .Container__Logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 2rem;
+    font-style: italic;
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  .Container__Form {
+    @extend %InputForm;
+  }
+
+  .Container__FavoritesAndCart {
+    display: flex;
+    gap: 2rem;
+
+    .FavoritesAndCart__Favorites,
+    .FavoritesAndCart__Cart {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+
+      .Favorites__qty,
+      .Cart__qty {
+        position: absolute;
+        top: -0.5rem;
+        right: 0;
+        width: 1rem;
+        height: 1rem;
+        font-size: 0.8rem;
+        text-align: center;
+        background-color: variables.$primary-color;
+        border-radius: 50%;
+      }
+
+      i,
+      a {
+        color: variables.$light-color;
+      }
+    }
+  }
+}

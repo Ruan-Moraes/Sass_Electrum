@@ -1,0 +1,88 @@
+@use "../../1-base/variables";
+@use "../../3-modules/mixins";
+
+.BannersNew__Container {
+  @include mixins.container;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  $numbers: One, Two, Three;
+  @each $number in $numbers {
+    #Banner#{$number} {
+      background-image: url(../../../img/banner-#{$number}.jpg);
+    }
+  }
+
+  .Container__Banner {
+    width: 31%;
+    height: 20rem;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include mixins.xl {
+      margin: 0 auto;
+      width: 80%;
+      height: 26rem;
+    }
+    @include mixins.lg {
+      width: 100%;
+    }
+
+    .Banner__Content {
+      padding: 1rem;
+      width: 60%;
+      height: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background-color: variables.$primary-color;
+      border-bottom-right-radius: 50%;
+      opacity: 0.8;
+      @include mixins.xl {
+        width: 50%;
+        height: 100%;
+        justify-content: center;
+        gap: 2rem;
+        text-align: center;
+        border-bottom-right-radius: 0;
+      }
+
+      .Content__Title {
+        font-size: 1.5rem;
+        color: variables.$light-color;
+        @include mixins.xl {
+          font-size: 1.4rem;
+        }
+      }
+
+      .Content_ViewMore {
+        font-size: 1.25rem;
+        color: variables.$light-color;
+        transition: text-shadow variables.$transition-animations;
+        &:hover {
+          text-shadow: 2px 2px 8px variables.$dark-color;
+        }
+        @include mixins.xl {
+          margin: 0 auto;
+          padding: 1rem 0;
+          width: 8rem;
+          font-size: 1rem;
+          background-color: variables.$bg-color;
+          border-radius: 999px;
+          transition: scale variables.$transition-animations;
+          &:hover {
+            scale: 1.1;
+          }
+        }
+
+        i {
+          margin-left: 0.25rem;
+          color: variables.$light-color;
+        }
+      }
+    }
+  }
+}

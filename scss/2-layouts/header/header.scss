@@ -1,0 +1,18 @@
+@use "../../1-base/variables";
+@use "Header__Information";
+@use "Header__Main";
+@use "Header__Navigation.scss";
+
+.Header {
+  &__Information {
+    background-color: variables.$secondary-bg-color;
+  }
+  &__Main {
+    background-color: variables.$bg-color;
+    border-bottom: 2px solid variables.$primary-color;
+  }
+  &__Navigation {
+    background-color: variables.$light-color;
+    border-bottom: 1px solid variables.$dark-color;
+  }
+}

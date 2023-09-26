@@ -1,0 +1,54 @@
+@use "../1-base/variables";
+@use "mixins";
+
+%btn {
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: variables.$light-color;
+  background-color: variables.$primary-color;
+  border-radius: 999px;
+  border: 2px solid variables.$primary-color;
+  cursor: pointer;
+  transition: color variables.$transition-animations,
+    background-color variables.$transition-animations;
+  &:hover {
+    color: variables.$primary-color;
+    background-color: variables.$light-color;
+  }
+}
+
+%title {
+  margin: 2rem 0 1rem 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: variables.$dark-color;
+}
+
+%InputForm {
+  form {
+    display: flex;
+
+    :nth-child(1) {
+      width: 20rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      transition: background-color variables.$transition-animations;
+      &:focus {
+        outline: none;
+        background-color: variables.$tertiary-bg-color;
+      }
+      @include mixins.md {
+        width: 14rem;
+      }
+    }
+
+    :nth-child(2) {
+      @extend %btn;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

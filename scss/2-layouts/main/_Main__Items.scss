@@ -1,0 +1,90 @@
+@use "../../1-base/variables";
+@use "../../3-modules/mixins";
+@use "../../3-modules/plugins";
+
+.Items__Container {
+  @include mixins.container;
+  @include mixins.xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .Container__Title {
+    @extend %title;
+  }
+
+  .Container__Products {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    @include mixins.md {
+      gap: 0;
+    }
+
+    .Products__Item {
+      width: calc(25% - 1rem);
+      height: 33rem;
+      padding: 1rem 1rem 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid variables.$dark-color;
+      @include mixins.lg {
+        height: max-content;
+        width: calc(33.33% - 1rem);
+      }
+      @include mixins.md {
+        width: 50%;
+      }
+
+      .Item__Header {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+
+        span:nth-child(1) {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 0.25rem 0.5rem;
+          color: variables.$light-color;
+          background-color: variables.$primary-color;
+        }
+
+        img {
+          width: 100%;
+        }
+
+        span:nth-child(3) {
+          color: variables.$secondary-color;
+        }
+      }
+
+      .Item__Main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+
+        h3 {
+          height: 2rem;
+          font-size: 1.25rem;
+        }
+
+        p {
+          color: variables.$primary-color;
+          font-weight: 700;
+        }
+
+        a {
+          @extend %btn;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@use "../../1-base/variables";
+@use "../../3-modules/mixins";
+@use "../../3-modules/plugins";
+
+.Main__Newsletter {
+  padding: 3rem 1rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+  border-top: 2px solid variables.$secondary-color;
+
+  .Newsletter__Title {
+    @extend %title;
+    margin: 0;
+    @include mixins.md {
+      font-size: 1.25rem;
+    }
+  }
+
+  .Newsletter__Form {
+    @extend %InputForm;
+
+    form {
+      :nth-child(1) {
+        border: 1px solid variables.$secondary-color;
+      }
+    }
+  }
+
+  .Newsletter__SocialMedias {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      padding: 0.6rem;
+      border: 1px solid variables.$secondary-color;
+      transition: background-color variables.$transition-animations;
+      &:hover {
+        background-color: variables.$secondary-color;
+      }
+
+      i {
+        height: 100%;
+        width: 100%;
+        color: variables.$dark-color;
+        transition: color variables.$transition-animations;
+        &:hover {
+          color: variables.$primary-color;
+        }
+      }
+    }
+  }
+}
